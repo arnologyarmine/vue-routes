@@ -19,7 +19,7 @@ import UserItem from '../users/UserItem.vue';
 export default {
   inject: ['users', 'teams'],
   components: {
-    UserItem
+    UserItem,
   },
   props: ['teamId'],
   data() {
@@ -29,26 +29,26 @@ export default {
     };
   },
   methods: {
-    loadTeamMembers(teamId){
-      const teamMembers = this.teams.find(team => team.id == teamId).members;
+    loadTeamMembers(teamId) {
+      const teamMembers = this.teams.find((team) => team.id == teamId).members;
       const teamMembersInfo = [];
-      teamMembers.forEach(teamMemberId => {
-        const member = this.users.find(user => user.id == teamMemberId);
+      teamMembers.forEach((teamMemberId) => {
+        const member = this.users.find((user) => user.id == teamMemberId);
         teamMembersInfo.push(member);
       });
       this.teamName = teamMembersInfo.fullName;
       this.members = teamMembersInfo;
-    }
+    },
   },
   created() {
     this.loadTeamMembers(this.teamId);
     // console.log(this.$route.query)
   },
   watch: {
-    teamId(newId){
-      this.loadTeamMembers(newId)
-    }
-  }
+    teamId(newId) {
+      this.loadTeamMembers(newId);
+    },
+  },
 };
 </script>
 

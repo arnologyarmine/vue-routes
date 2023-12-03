@@ -1,3 +1,3 @@
 <template>
-    <div>Team's footer</div>
+  <div>Team's footer</div>
 </template>
